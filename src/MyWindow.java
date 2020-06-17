@@ -20,7 +20,7 @@ public class MyWindow extends JFrame {
         setBounds(300, 300, 150, 400);
 
         setLayout(new FlowLayout());
-        JButton[] jbs = new JButton[12];
+        JButton[] jbs = new JButton[15];
         JPanel jPanel1 = new JPanel();
 
         JTextField field = new JTextField();
@@ -40,9 +40,9 @@ public class MyWindow extends JFrame {
         JPanel jPanel2 = new JPanel();
         jPanel2.setBounds(0, 0, 150, 250);
 
-        jPanel2.setLayout(new GridLayout(4, 3));
+        jPanel2.setLayout(new GridLayout(5, 3));
 
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 15; i++) {
             jbs[i] = new JButton("" + (i + 1));
             if (i == 10) {
                 jbs[i].setText("0");
@@ -53,7 +53,15 @@ public class MyWindow extends JFrame {
             if (i == 11) {
                 jbs[i].setText("*");
             }
-            jPanel2.add(jbs[i]);
+            if (i == 12) {
+                jbs[i].setText("C");
+            }
+            if (i == 13) {
+                jbs[i].setText("");
+            }
+            if (i == 14) {
+                jbs[i].setText("D");
+            }            jPanel2.add(jbs[i]);
         }
         jbs[0].addActionListener(new ActionListener() {
             @Override
@@ -145,7 +153,21 @@ public class MyWindow extends JFrame {
             }
         });
 
+        jbs[12].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                display = "";
+                field.setText(display);
+            }
+        });
 
+        jbs[14].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                display = display + "*звоню*";
+                field.setText(display);
+            }
+        });
 
         add(jPanel1);
         add(jPanel2);
